@@ -1,6 +1,4 @@
-<?php 
-
-
+<?php
 class Calculate {
     public $waktu,
            $modal,

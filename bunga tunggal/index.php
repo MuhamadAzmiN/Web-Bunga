@@ -29,6 +29,8 @@ class Calculate {
     }
 }
 
+$hasil = ''; // Inisialisasi variabel hasil kosong
+
 // Memproses form setelah tombol submit ditekan
 if(isset($_POST["btn"])){
     // Validasi input form
@@ -42,10 +44,10 @@ if(isset($_POST["btn"])){
         $bungas->getModal($modal);
         $bungas->getWaktu($waktu);
         $bungas->getBunga($bunga);
-        $hasil = $bungas->hitungBungaSederhana();
-        echo "Hasil Bunga Sederhana: Rp " . number_format($hasil, 2, ',', '.');
+        $hasilBunga = $bungas->hitungBungaSederhana();
+        $hasil = "Hasil Bunga Sederhana: Rp " . number_format($hasilBunga, 2, ',', '.');
     } else {
-        echo "Masukkan data yang valid!";
+        $hasil = "Masukkan data yang valid!";
     }
 }
 ?>
@@ -94,6 +96,12 @@ if(isset($_POST["btn"])){
         button:hover {
             background-color: #218838;
         }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -110,5 +118,13 @@ if(isset($_POST["btn"])){
 
         <button type="submit" name="btn" value="Submit">Hitung</button>
     </form>
+
+    <div class="result">
+        <?php
+        if ($hasil) {
+            echo $hasil;
+        }
+        ?>
+    </div>
 </body>
 </html>
